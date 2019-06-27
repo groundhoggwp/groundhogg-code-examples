@@ -72,4 +72,6 @@ class My_Custom_Tab
 
 }
 
-$my_new_tab = new My_Custom_Tab();
+add_action( 'admin_init', function (){
+    $my_new_tab = new My_Custom_Tab();
+} );
