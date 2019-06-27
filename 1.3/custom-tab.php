@@ -38,6 +38,8 @@ class My_Custom_Tab
             }
 
             $new_tabs[ $tab_id ] = $name;
+
+            $i++;
         }
 
         $tabs = $new_tabs;
