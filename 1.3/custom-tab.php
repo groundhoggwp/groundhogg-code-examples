@@ -24,8 +24,23 @@ class My_Custom_Tab
      */
     public function register_tab( $tabs )
     {
+        // Basic
         $tabs[ 'my_custom_tab' ] = __( 'My Custom Tab' );
 
+        // Reorder tabs
+        $i = 0;
+        $new_tabs = [];
+        foreach ( $tabs as $tab_id => $name ){
+
+            // Insert as 3rd tab
+            if ( $i === 3 ){
+                $new_tabs[ 'my_custom_tab' ] = __( 'My Custom Tab' );
+            }
+
+            $new_tabs[ $tab_id ] = $name;
+        }
+
+        $tabs = $new_tabs;
         return $tabs;
     }
 
