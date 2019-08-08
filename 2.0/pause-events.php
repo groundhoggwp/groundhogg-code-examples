@@ -3,7 +3,7 @@
 define( 'ACTIVE_TAG_ID', 1234 ); // todo change tag id
 define( 'INACTIVE_TAG_ID', 4321 ); // todo change tag id
 
-add_action( 'groundhogg/contact/tag_applied', 'switch_tags_when_changed', 10, 2 );
+add_action( 'groundhogg/contact/tag_applied', 'pause_events_when_status_changed', 10, 2 );
 
 /**
  * @param $contact \Groundhogg\Contact
