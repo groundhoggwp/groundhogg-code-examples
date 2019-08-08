@@ -16,6 +16,16 @@ function pause_events_when_status_changed( $contact, $tag_id )
         case ACTIVE_TAG_ID:
 
             \Groundhogg\get_db( 'events' )->mass_update( [
+                'status' => 'waiting',
+            ], [
+                'status' => 'paused',
+                'contact_id' => $contact->get_id(),
+            ] );
+
+            break;
+        case INACTIVE_TAG_ID:
+
+            \Groundhogg\get_db( 'events' )->mass_update( [
                 'status' => 'paused',
             ], [
                 'status' => \Groundhogg\Event::WAITING,
@@ -23,16 +33,6 @@ function pause_events_when_status_changed( $contact, $tag_id )
                 'funnel_id' => [
                     2, 3 //TODO Ids of funnels you want paused
                 ]
-            ] );
-
-            break;
-        case INACTIVE_TAG_ID:
-
-            \Groundhogg\get_db( 'events' )->mass_update( [
-                'status' => 'waiting',
-            ], [
-                'status' => 'paused',
-                'contact_id' => $contact->get_id(),
             ] );
 
             break;
