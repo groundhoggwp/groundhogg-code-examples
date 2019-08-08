@@ -67,7 +67,14 @@ function add_tags_to_customer( $order_id, $posted_data, $order )
 {
 
     $product_info = get_product_info_from_order( $order );
-    $contact = wpgh_get_contact( $order->get_billing_email() );
+
+    if ( function_exists( 'wpgh_get_contact' ) ){
+        $contact = wpgh_get_contact( $order->get_billing_email() );
+    } else if ( function_exists( '\Groundhogg\get_contactdata' ) ){
+        $contact = \Groundhogg\get_contactdata( $order->get_billing_email() );
+    } else {
+        return;
+    }
 
     if ( ! $contact ){
         return;
