@@ -1,5 +1,7 @@
 <?php
 
+use Groundhogg\Contact;
+
 define( 'ACTIVE_TAG_ID', 1234 ); // todo change tag id
 define( 'INACTIVE_TAG_ID', 4321 ); // todo change tag id
 
@@ -20,4 +22,25 @@ function switch_tags_when_changed( $contact, $tag_id )
             $contact->remove_tag( ACTIVE_TAG_ID );
             break;
     }
+}
+
+
+define( 'PSEUDO_UNMARKETABLE_TAG', 1234 );
+
+add_filter( 'groundhogg/contact/is_marketable', 'tag_makes_unmarketable', 10, 2 );
+
+/**
+ * @param $is_marketable bool
+ * @param $contact Contact
+ * @return bool
+ */
+function tag_makes_unmarketable( $is_marketable, $contact )
+{
+    // If false contact is already unmarketable
+    if ( ! $is_marketable ){
+        return $is_marketable;
+    }
+
+    // return FALSE if contact has the tag
+    return ! $contact->has_tag( PSEUDO_UNMARKETABLE_TAG );
 }
