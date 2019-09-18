@@ -2,6 +2,8 @@
 
 use Groundhogg\Contact;
 
+################# Switch Tags #################
+
 define( 'ACTIVE_TAG_ID', 1234 ); // todo change tag id
 define( 'INACTIVE_TAG_ID', 4321 ); // todo change tag id
 
@@ -24,6 +26,7 @@ function switch_tags_when_changed( $contact, $tag_id )
     }
 }
 
+################# Pseudo Unmarketable Tag #################
 
 define( 'PSEUDO_UNMARKETABLE_TAG', 1234 );
 
