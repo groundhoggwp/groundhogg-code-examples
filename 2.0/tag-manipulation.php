@@ -47,3 +47,5 @@ function tag_makes_unmarketable( $is_marketable, $contact )
     // return FALSE if contact has the tag
     return ! $contact->has_tag( PSEUDO_UNMARKETABLE_TAG );
 }
+
+add_filter( 'groundhogg/email_is_same_domain', '__return_true' );
